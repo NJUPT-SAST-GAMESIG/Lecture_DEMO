@@ -17,7 +17,6 @@ namespace Class1.PlantsChooser
 
         private Image _cardImage;
         private Slider _cardSlider;
-        private SunShineCounter _sunShineCounter;
 
         private void OnEnable()
         {
@@ -28,7 +27,7 @@ namespace Class1.PlantsChooser
         // Start is called before the first frame update
         private void Start()
         {
-            _sunShineCounter = GameObject.Find("SunShineNum").GetComponent<SunShineCounter>();
+           
         }
 
         // Update is called once per frame
@@ -55,8 +54,6 @@ namespace Class1.PlantsChooser
         public void OnPointerClick(PointerEventData eventData)
         {
             if (_isCd)
-                return;
-            if (!_sunShineCounter.UseSunShine(_card.SunShineReduce))
                 return;
             string path = Path.Combine("Images/Card", _card.Name + "2");
             Sprite sprite = Resources.Load<Sprite>(path);
