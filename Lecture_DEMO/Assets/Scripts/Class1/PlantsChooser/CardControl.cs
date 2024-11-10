@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Class2.SunManager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,11 +18,15 @@ namespace Class1.PlantsChooser
 
         private Image _cardImage;
         private Slider _cardSlider;
+        private Image _cover;//冷却遮罩
+        private ISunManager _sunManager;//获取阳光管理器的引用,记得想办法初始化
 
         private void OnEnable()
         {
             _cardImage = GetComponent<Image>();
             _cardSlider = GetComponentInChildren<Slider>();
+            _cover = GetComponentInChildren<Image>();
+            //初始化阳光管理器
         }
 
         // Start is called before the first frame update
@@ -32,6 +37,16 @@ namespace Class1.PlantsChooser
 
         // Update is called once per frame
         void Update()
+        {
+            UpdateCooldown();
+            if (_isCd) return;
+            if (_sunManager.GetSunValue() < _card.SunShineReduce)
+            {
+                _cover.color = new Color(142,142,142,224);
+            }
+        }
+
+        private void UpdateCooldown()
         {
             if (!_isCd)
                 return;
