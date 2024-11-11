@@ -1,16 +1,18 @@
-namespace Class2.SunManager
-{
-    public class SunManager:ISunManager
-    {
-        public void SunReduce(int sunCost){}
-        public int GetSunValue()
-        {
-            throw new System.NotImplementedException();
-        }
+using System;
 
-        public bool SunNumJudge()
-        {
-            return true;
-        }
+public class SunManager : ISunManager
+{
+    public void SunReduce(int sunCost)
+    {
+    }
+
+    public int GetSunValue()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool SunNumJudge()
+    {
+        return true;
     }
 }

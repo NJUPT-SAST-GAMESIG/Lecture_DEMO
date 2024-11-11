@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Class1.PlantsChooser;
-using Class2.SoundManagers;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -27,10 +25,10 @@ public class PlantTracer : MonoBehaviour
         _bindingPlant.SetActive(true);
         _isTracing = true;
     }
-    public void StartTracing(PlantCard card)
+    public void StartTracing(PlantCardConfig cardConfig)
     {
         _bindingPlant.SetActive(true);
-        string path = Path.Combine("Images/Plants/", card.Name + "_1");
+        string path = Path.Combine("Images/Plants/", cardConfig.Name + "_1");
         _sprite = Resources.Load<Sprite>(path);
         _isTracing = true;
     }
