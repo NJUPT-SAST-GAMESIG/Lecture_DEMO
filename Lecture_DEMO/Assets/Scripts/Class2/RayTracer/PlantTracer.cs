@@ -8,14 +8,14 @@ using UnityEngine;
 public class PlantTracer : MonoBehaviour
 {
     private GameObject _bindingPlant;
-    private Sprite _sprite;
+    private SpriteRenderer _spriteRenderer;
     private bool _isTracing;
     private CardSoundManager _cardSoundManager;
 
-    private void Start()
+    private void OnEnable()
     {
         _bindingPlant = transform.GetChild(0).gameObject;
-        _sprite = _bindingPlant.GetComponent<Sprite>();
+        _spriteRenderer = _bindingPlant.GetComponent<SpriteRenderer>();
         //初始化音效管理器
     }
     
@@ -27,9 +27,9 @@ public class PlantTracer : MonoBehaviour
     }
     public void StartTracing(PlantCardConfig cardConfig)
     {
-        _bindingPlant.SetActive(true);
         string path = Path.Combine("Images/Plants/", cardConfig.Name + "_1");
-        _sprite = Resources.Load<Sprite>(path);
+        _spriteRenderer.sprite = Resources.Load<Sprite>(path);
+        _bindingPlant.SetActive(true);
         _isTracing = true;
     }
     

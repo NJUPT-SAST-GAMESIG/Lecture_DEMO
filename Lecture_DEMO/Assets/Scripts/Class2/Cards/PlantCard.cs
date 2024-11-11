@@ -13,10 +13,11 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
 
     private Image _cardImage;
     private Slider _cardSlider;
-    private GameObject _cover; //冷却遮罩
-    private ISunManager _sunManager; //获取阳光管理器的引用,记得想办法初始化
-    private CardSoundManager _cardSoundManager; //获取音效管理器的引用,记得想办法初始化
-
+    
+    private ISunManager _sunManager; //这几个管理器的初始化是权宜之计，后面会再改
+    private CardSoundManager _cardSoundManager; //
+    private PlantTracer _plantTracer;//
+    
     private void OnEnable()
     {
         _cardImage = GetComponent<Image>();
@@ -24,13 +25,8 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         //初始化阳光管理器
         //初始化音效管理器
     }
+    
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
     private void Update()
     {
         UpdateCooldown();
@@ -53,8 +49,7 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         //     _cardImage.sprite = sprite;
         // }
     }
-
-
+    
     private void UpdateCooldown()
     {
         if (!_isCd)
@@ -74,7 +69,18 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         _cardConfig = cardConfig;
     }
 
-
+    public void SetSunManager(ISunManager sunManager)
+    {
+        _sunManager = sunManager;
+    }
+    public void SetCardSoundManager(CardSoundManager cardSoundManager)
+    {
+        _cardSoundManager = cardSoundManager;
+    }
+    public void SetPlantTracer(PlantTracer plantTracer)
+    {
+        _plantTracer = plantTracer;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_isCd)
@@ -85,6 +91,10 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         //     _cardSoundManager.PlayLackOfSunSound();
         //     return;
         // }
+        
+        //开始植物追踪
+        _plantTracer.StartTracing(_cardConfig);
+        
         var path = Path.Combine("Images/Card", _cardConfig.Name + "2");
         var sprite = Resources.Load<Sprite>(path);
         _cardImage.sprite = sprite;
