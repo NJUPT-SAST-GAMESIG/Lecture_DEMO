@@ -22,24 +22,31 @@ public class CardController : MonoBehaviour
 
     public void AddCardTest()
     {
-        AddCard(0, "card_peashooter", 100, 1);
-        AddCard(1, "card_cherrybomb", 150, 5);
+        AddCard(0, "peashooter", 100, 1);
+        AddCard(1, "sunflower", 50, 1);
         InstantiateAllCards();
     }
 
     public void AddCard(int id, string name, int sunShineReduce, int cdTime)
     {
-        
-        if(_cardCount <= _cardsConfigs.Count) print("卡牌数量已满");
-        
-        PlantCardConfig config = new PlantCardConfig(id, name, sunShineReduce, cdTime);
+        if (_cardCount <= _cardsConfigs.Count)//这个最大卡牌数量是只读的，看看要不要改
+        {
+            print("卡牌数量已满");
+            return;
+        }
+
+        var config = new PlantCardConfig(id, name, sunShineReduce, cdTime);
         _cardsConfigs.Add(config);
     }
     
     //卡牌添加的重载方法
     public void AddCard(PlantCardConfig plantCardConfig)
     {
-        if(_cardCount <= _cardsConfigs.Count) print("卡牌数量已满");
+        if (_cardCount <= _cardsConfigs.Count)
+        {
+            print("卡牌数量已满");
+            return;
+        }
         
         _cardsConfigs.Add(plantCardConfig);
     }
@@ -74,7 +81,7 @@ public class CardController : MonoBehaviour
     private void InstantiateCardImage(GameObject plantCardObject, PlantCardConfig card)
     {
         Image plantCardImage = plantCardObject.GetComponent<Image>();
-        string path = Path.Combine("Images/Card", card.Name);
+        string path = "Images/Card/card_"+card.Name;
         plantCardImage.sprite = Resources.Load<Sprite>(path);
     }
 

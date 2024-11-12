@@ -22,8 +22,6 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     {
         _cardImage = GetComponent<Image>();
         _cardSlider = GetComponentInChildren<Slider>();
-        //初始化阳光管理器
-        //初始化音效管理器
     }
     
 
@@ -57,7 +55,7 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         _cardSlider.value = 1 - (Time.time - _cdStartTime) / _cardConfig.CardCd;
         if (Time.time > _cdStartTime + _cardConfig.CardCd)
         {
-            var path = Path.Combine("Images/Card", _cardConfig.Name);
+            var path = "Images/Card/card_"+ _cardConfig.Name;
             var sprite = Resources.Load<Sprite>(path);
             _cardImage.sprite = sprite;
             _isCd = false;
@@ -95,7 +93,7 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         //开始植物追踪
         _plantTracer.StartTracing(_cardConfig);
         
-        var path = Path.Combine("Images/Card", _cardConfig.Name + "2");
+        var path = "Images/Card/card_"+ _cardConfig.Name + "2";
         var sprite = Resources.Load<Sprite>(path);
         _cardImage.sprite = sprite;
         _cdStartTime = Time.time;
