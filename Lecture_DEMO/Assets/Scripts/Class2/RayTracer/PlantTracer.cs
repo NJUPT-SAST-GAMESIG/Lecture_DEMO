@@ -65,4 +65,8 @@ public class PlantTracer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         _bindingPlant.transform.position = ray.origin;
     }
+    public SpriteRenderer GetSpriteRenderer()
+    {
+        return _spriteRenderer;
+    }
 }

@@ -83,15 +83,15 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     {
         if (_isCd)
             return;
-        // if (_sunManager.GetSunValue() < _card.SunShineReduce)
-        // {
-        //     //播放音效
-        //     _cardSoundManager.PlayLackOfSunSound();
-        //     return;
-        // }
-        
+        if (_sunManager.GetSunValue() < _cardConfig.SunShineReduce)
+        {
+            //播放音效
+            _cardSoundManager.Play(CardSoundType.LackOfSunSound);
+            return;
+        }
         //开始植物追踪
         _plantTracer.StartTracing(_cardConfig);
+        _cardSoundManager.Play(CardSoundType.PickUpSound);
         
         var path = "Images/Card/card_"+ _cardConfig.Name + "2";
         var sprite = Resources.Load<Sprite>(path);

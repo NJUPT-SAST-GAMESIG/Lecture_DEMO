@@ -3,21 +3,28 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardController : MonoBehaviour
+public class CardManager : MonoBehaviour
 {
     private GameObject _plantCardPanel;
+    
     private List<PlantCardConfig> _cardsConfigs;//存储卡牌信息列表，存好了后再读卡牌信息加载到游戏内
     private CardSoundManager _cardSoundManager;
     private PlantTracer _plantTracer;
     private SunManager _sunManager;
+    private GridManager _gridManager;
+    
     private readonly int _cardCount = 8;
     private void Start()
     {
         _plantCardPanel = GameObject.Find("Canvas/PlantsChooser/CardPanel");
         _cardsConfigs = new List<PlantCardConfig>();
+        
         _cardSoundManager = transform.GetComponent<CardSoundManager>();
         _plantTracer = transform.GetComponent<PlantTracer>();
         _sunManager = transform.GetComponent<SunManager>();
+        _gridManager = transform.parent.GetChild(2).gameObject.GetComponent<GridManager>();//注意这个2，这是GridManager在父物体下的索引
+        _gridManager.SetCardManager(this);//双向获取引用
+        _gridManager.SetSpriteRendererOnPlantTracer(_plantTracer.GetSpriteRenderer());
     }
 
     public void AddCardTest()
@@ -55,7 +62,6 @@ public class CardController : MonoBehaviour
     {
         foreach (PlantCardConfig card in _cardsConfigs)
         {
-            // LoadCard(card);
             //进行卡牌实例化和卡牌生成
             GameObject plantCardPre = Resources.Load<GameObject>("PlantsCardPrefab/PlantCard");
             GameObject plantCardObject = Instantiate(plantCardPre, _plantCardPanel.transform);
@@ -72,7 +78,7 @@ public class CardController : MonoBehaviour
 
     private void InstantiateCardManagers(PlantCard cardScript)
     {
-        // cardScript.SetSunManager(_sunManager);
+        cardScript.SetSunManager(_sunManager);
         cardScript.SetCardSoundManager(_cardSoundManager);
         cardScript.SetPlantTracer(_plantTracer);
     }
@@ -84,6 +90,7 @@ public class CardController : MonoBehaviour
         string path = "Images/Card/card_"+card.Name;
         plantCardImage.sprite = Resources.Load<Sprite>(path);
     }
+    
 
     // //将卡牌的信息加载到游戏内
     // private void LoadCard(PlantCardConfig plantCardConfig)
