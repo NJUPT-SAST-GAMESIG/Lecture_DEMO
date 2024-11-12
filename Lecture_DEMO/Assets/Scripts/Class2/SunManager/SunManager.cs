@@ -1,14 +1,18 @@
 using System;
+using UnityEngine;
 
-public class SunManager : ISunManager
+public class SunManager : MonoBehaviour,ISunManager
 {
+    private int SunNum{get;set;}
     public void SunReduce(int sunCost)
     {
+        SunNum -= sunCost;
     }
 
     public int GetSunValue()
     {
-        throw new NotImplementedException();
+        int sunValue = SunNum;
+        return sunValue;
     }
 
     public bool SunNumJudge()

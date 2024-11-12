@@ -9,7 +9,7 @@ public class CardController : MonoBehaviour
     private List<PlantCardConfig> _cardsConfigs;//存储卡牌信息列表，存好了后再读卡牌信息加载到游戏内
     private CardSoundManager _cardSoundManager;
     private PlantTracer _plantTracer;
-    // private SunManager _sunManager;
+    private SunManager _sunManager;
     private readonly int _cardCount = 8;
     private void Start()
     {
@@ -17,7 +17,7 @@ public class CardController : MonoBehaviour
         _cardsConfigs = new List<PlantCardConfig>();
         _cardSoundManager = transform.GetComponent<CardSoundManager>();
         _plantTracer = transform.GetComponent<PlantTracer>();
-        // _sunManager = transform.GetComponent<SunManager>();//这个脚本还没写好，也还没挂上，记得挂上
+        _sunManager = transform.GetComponent<SunManager>();
     }
 
     public void AddCardTest()
