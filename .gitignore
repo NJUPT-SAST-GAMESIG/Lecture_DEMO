@@ -76,5 +76,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Lecture_DEMO/Logs
-Lecture_DEMO/Temp
+
+/Lecture_DEMO/Logs/*
+/Lecture_DEMO/Temp/*
