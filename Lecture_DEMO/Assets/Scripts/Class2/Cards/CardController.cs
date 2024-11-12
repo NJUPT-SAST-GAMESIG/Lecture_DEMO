@@ -9,16 +9,15 @@ public class CardController : MonoBehaviour
     private List<PlantCardConfig> _cardsConfigs;//存储卡牌信息列表，存好了后再读卡牌信息加载到游戏内
     private CardSoundManager _cardSoundManager;
     private PlantTracer _plantTracer;
-    // private SunManager _sunManager;
-    private readonly int _cardCount = 8;//最大卡牌数量
+    private SunManager _sunManager;
+    private readonly int _cardCount = 8;
     private void Start()
     {
         _plantCardPanel = GameObject.Find("Canvas/PlantsChooser/CardPanel");
         _cardsConfigs = new List<PlantCardConfig>();
         _cardSoundManager = transform.GetComponent<CardSoundManager>();
         _plantTracer = transform.GetComponent<PlantTracer>();
-        _plantTracer.SetCardSoundManager(_cardSoundManager);
-        // _sunManager = transform.GetComponent<SunManager>();//这个脚本还没写好，也还没挂上，记得挂上
+        _sunManager = transform.GetComponent<SunManager>();
     }
 
     public void AddCardTest()
