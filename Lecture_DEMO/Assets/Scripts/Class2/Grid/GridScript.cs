@@ -30,7 +30,6 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
         CardSoundManager.Play(CardSoundType.PlantSound);
         PlantTracer.StopTracing();
-        GridManager.card.SetCardInCd();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

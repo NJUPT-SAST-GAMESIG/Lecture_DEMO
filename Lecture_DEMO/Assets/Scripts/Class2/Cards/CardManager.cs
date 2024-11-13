@@ -82,6 +82,7 @@ public class CardManager : MonoBehaviour
         cardScript.SetSunManager(_sunManager);
         cardScript.SetCardSoundManager(_cardSoundManager);
         cardScript.SetPlantTracer(_plantTracer);
+        cardScript.SetGridManager(_gridManager);
     }
 
     //初始化卡牌图像
@@ -92,17 +93,4 @@ public class CardManager : MonoBehaviour
         plantCardImage.sprite = Resources.Load<Sprite>(path);
     }
     
-
-    // //将卡牌的信息加载到游戏内
-    // private void LoadCard(PlantCardConfig plantCardConfig)
-    // {
-    //     GameObject plantCardPre = Resources.Load<GameObject>("PlantsCardPrefab/PlantCard");
-    //     
-    //     GameObject plantCardObject = Instantiate(plantCardPre, _plantCardPanel.transform);
-    //     
-    //     plantCardObject.GetComponent<PlantCard>().SetCard(plantCardConfig);
-    //     Image plantCardImage = plantCardObject.GetComponent<Image>();
-    //     string path = Path.Combine("Images/Card", plantCardConfig.Name);
-    //     plantCardImage.sprite = Resources.Load<Sprite>(path);
-    // }
 }
