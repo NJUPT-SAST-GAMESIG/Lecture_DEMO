@@ -1,27 +1,29 @@
-using System;
 using UnityEngine;
 
-public class SunManager : MonoBehaviour,ISunManager
+namespace Class2.SunManager
 {
-    private int SunNum{get;set;}
-    public void SunReduce(int sunCost)
+    public class SunManager : MonoBehaviour,ISunManager
     {
-        SunNum -= sunCost;
-    }
+        private int SunNum{get;set;}
+        public void SunReduce(int sunCost)
+        {
+            SunNum -= sunCost;
+        }
 
-    private void Start()
-    {
-        SunNum = 100;//暂时一写
-    }
+        private void Start()
+        {
+            SunNum = 0;
+        }
 
-    public int GetSunValue()
-    {
-        int sunValue = SunNum;
-        return sunValue;
-    }
+        public int GetSunValue()
+        {
+            int sunValue = SunNum;
+            return sunValue;
+        }
 
-    public bool SunNumJudge()
-    {
-        return true;
+        public bool SunNumJudge()
+        {
+            return true;
+        }
     }
 }

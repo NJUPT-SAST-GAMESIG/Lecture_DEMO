@@ -1,43 +1,45 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using Class2.Cards;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+namespace Class2.Grid
 {
-    private List<GridScript> _grids;
-    private List<GameObject> _gridObjects;
-    private bool _isPointerEnter;
-    private CardManager _cardManager;
-    private SpriteRenderer _spriteRendererOnPlantTracer;
-    public static PlantCard card;
-    private void OnEnable()
+    public class GridManager : MonoBehaviour
     {
-        _gridObjects = new List<GameObject>();
-        _grids = new List<GridScript>();
-        //疑似高性能消耗，可能会卡顿
-        for (int i = 0; i < transform.childCount; i++)
+        private List<GridScript> _grids;
+        private List<GameObject> _gridObjects;
+        private bool _isPointerEnter;
+        private CardManager _cardManager;
+        private SpriteRenderer _spriteRendererOnPlantTracer;
+        public static PlantCard card;
+        private void OnEnable()
         {
-            _gridObjects.Add(transform.GetChild(i).gameObject);
-            _gridObjects[i].AddComponent<GridScript>();
-            _grids.Add(_gridObjects[i].GetComponent<GridScript>());
-            _grids[i].SetGridController(this);
+            _gridObjects = new List<GameObject>();
+            _grids = new List<GridScript>();
+            //疑似高性能消耗，可能会卡顿
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                _gridObjects.Add(transform.GetChild(i).gameObject);
+                _gridObjects[i].AddComponent<GridScript>();
+                _grids.Add(_gridObjects[i].GetComponent<GridScript>());
+                _grids[i].SetGridController(this);
+            }
         }
-    }
-    public void SetCardManager(CardManager cardManager)
-    {
-        _cardManager = cardManager;
-    }
-    public void SetIsPointerEnter(bool value)
-    {
-        _isPointerEnter = value;
-    }
-    public void GetSpriteRendererOnPlantTracer(SpriteRenderer spriteRenderer)
-    {
-        _spriteRendererOnPlantTracer = spriteRenderer;
-    }
-    public Sprite GetSpriteOnPlantTracer()
-    {
-        return _spriteRendererOnPlantTracer.sprite;
+        public void SetCardManager(CardManager cardManager)
+        {
+            _cardManager = cardManager;
+        }
+        public void SetIsPointerEnter(bool value)
+        {
+            _isPointerEnter = value;
+        }
+        public void GetSpriteRendererOnPlantTracer(SpriteRenderer spriteRenderer)
+        {
+            _spriteRendererOnPlantTracer = spriteRenderer;
+        }
+        public Sprite GetSpriteOnPlantTracer()
+        {
+            return _spriteRendererOnPlantTracer.sprite;
+        }
     }
 }

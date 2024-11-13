@@ -3339,6 +3339,7 @@ GameObject:
   - component: {fileID: 770334859}
   - component: {fileID: 770334861}
   - component: {fileID: 770334860}
+  - component: {fileID: 770334862}
   m_Layer: 5
   m_Name: SunShineNum
   m_TagString: Untagged
@@ -3462,6 +3463,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770334858}
   m_CullTransparentMesh: 1
+--- !u!114 &770334862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770334858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5807bb931a249a8a2812d5be2f79eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiText: {fileID: 770334860}
+  sunManager: {fileID: 830624979}
 --- !u!1 &777782300
 GameObject:
   m_ObjectHideFlags: 0
@@ -3796,10 +3811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c651ea30ec3da804bb167b0acd47b7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantSound: {fileID: 830624982}
-  lackOfSunSound: {fileID: 0}
-  pickUpSound: {fileID: 830624978}
-  putBackSound: {fileID: 0}
 --- !u!114 &830624977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8133,7 +8144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a35fcaaf50a728469c0f6f022bdae7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grids: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
