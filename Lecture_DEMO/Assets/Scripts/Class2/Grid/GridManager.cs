@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour
     private CardManager _cardManager;
     private SpriteRenderer _spriteRendererOnPlantTracer;
 
-    private void Start()
+    private void OnEnable()
     {
         _gridObjects = new List<GameObject>();
         _grids = new List<GridScript>();

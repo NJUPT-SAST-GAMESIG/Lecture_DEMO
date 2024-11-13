@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
     private GridManager _gridManager;
-    private SpriteRenderer _spriteRenderer;
+    private Image _image;
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _image = GetComponent<Image>();
     }
 
     public void SetGridController(GridManager gridManager)
@@ -21,6 +22,7 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     
     public void OnPointerClick(PointerEventData eventData)
     {
+        print("PointerClick");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
