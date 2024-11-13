@@ -8,12 +8,7 @@ public class SunManager : MonoBehaviour,ISunManager
     {
         SunNum -= sunCost;
     }
-
-    private void Start()
-    {
-        SunNum = 100;//暂时一写
-    }
-
+    
     public int GetSunValue()
     {
         int sunValue = SunNum;

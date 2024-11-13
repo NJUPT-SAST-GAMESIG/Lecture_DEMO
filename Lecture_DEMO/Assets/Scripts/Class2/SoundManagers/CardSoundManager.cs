@@ -11,7 +11,6 @@ public enum CardSoundType
 }
 public class CardSoundManager : MonoBehaviour
 {
-    private List<PlantCard> _cards;
     private static AudioSource plantSound;
     private static AudioSource lackOfSunSound;
     private static AudioSource pickUpSound;
@@ -32,12 +31,6 @@ public class CardSoundManager : MonoBehaviour
         
         putBackSound = gameObject.AddComponent<AudioSource>();
         putBackSound.playOnAwake = false;
-        
-        //初始化卡牌列表
-        //初始化音效
-        // print(plantSound.clip==null);
-        // plantSound.clip = Resources.Load<AudioClip>(PlantSoundPath + "plant");
-        // print(plantSound.clip==null);
         
     }
 
