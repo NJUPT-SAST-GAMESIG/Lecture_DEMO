@@ -32,8 +32,12 @@ public class GridManager : MonoBehaviour
     {
         _isPointerEnter = value;
     }
-    public void SetSpriteRendererOnPlantTracer(SpriteRenderer spriteRenderer)
+    public void GetSpriteRendererOnPlantTracer(SpriteRenderer spriteRenderer)
     {
         _spriteRendererOnPlantTracer = spriteRenderer;
+    }
+    public Sprite GetSpriteOnPlantTracer()
+    {
+        return _spriteRendererOnPlantTracer.sprite;
     }
 }

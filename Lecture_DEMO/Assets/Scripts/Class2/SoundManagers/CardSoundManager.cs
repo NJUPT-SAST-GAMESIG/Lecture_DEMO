@@ -12,18 +12,36 @@ public enum CardSoundType
 public class CardSoundManager : MonoBehaviour
 {
     private List<PlantCard> _cards;
-    [SerializeField]private AudioSource plantSound;
-    [SerializeField]private AudioSource lackOfSunSound;
-    [SerializeField]private AudioSource pickUpSound;
-    [SerializeField]private AudioSource putBackSound;
+    private static AudioSource plantSound;
+    private static AudioSource lackOfSunSound;
+    private static AudioSource pickUpSound;
+    private static AudioSource putBackSound;
+    public const string PlantSoundPath = "Audio/Sound/";
 
     private void Start()
     {
+        plantSound = gameObject.AddComponent<AudioSource>();
+        plantSound.playOnAwake = false;
+        plantSound.clip = Resources.Load<AudioClip>(PlantSoundPath + "plant");
+        
+        lackOfSunSound = gameObject.AddComponent<AudioSource>();
+        lackOfSunSound.playOnAwake = false;
+        
+        pickUpSound = gameObject.AddComponent<AudioSource>();
+        pickUpSound.playOnAwake = false;
+        
+        putBackSound = gameObject.AddComponent<AudioSource>();
+        putBackSound.playOnAwake = false;
+        
         //初始化卡牌列表
         //初始化音效
+        // print(plantSound.clip==null);
+        // plantSound.clip = Resources.Load<AudioClip>(PlantSoundPath + "plant");
+        // print(plantSound.clip==null);
+        
     }
 
-    public void Play(CardSoundType cardSoundType)
+    public static void Play(CardSoundType cardSoundType)
     {
         switch (cardSoundType)
         {

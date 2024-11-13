@@ -26,7 +26,7 @@ public class CardManager : MonoBehaviour
         // _gridManager = transform.parent.GetChild(2).gameObject.GetComponent<GridManager>();//注意这个2，这是GridManager在父物体下的索引
         
         _gridManager.SetCardManager(this);//双向获取引用
-        _gridManager.SetSpriteRendererOnPlantTracer(_plantTracer.GetSpriteRenderer());
+        _gridManager.GetSpriteRendererOnPlantTracer(_plantTracer.GetSpriteRenderer());
     }
 
     public void AddCardTest()
