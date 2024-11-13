@@ -70,7 +70,6 @@ public class CardManager : MonoBehaviour
             
             //获取卡牌脚本
             PlantCard cardScript = plantCardObject.GetComponent<PlantCard>();
-            
             cardScript.SetCard(card);
             
             InstantiateCardImage(plantCardObject, card);

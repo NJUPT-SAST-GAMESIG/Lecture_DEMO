@@ -10,7 +10,7 @@ public class GridManager : MonoBehaviour
     private bool _isPointerEnter;
     private CardManager _cardManager;
     private SpriteRenderer _spriteRendererOnPlantTracer;
-
+    public static PlantCard card;
     private void OnEnable()
     {
         _gridObjects = new List<GameObject>();

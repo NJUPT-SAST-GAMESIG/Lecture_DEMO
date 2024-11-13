@@ -24,15 +24,19 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     public void OnPointerClick(PointerEventData eventData)
     {
         if(_isPlanted) return;
+        if (!PlantTracer.IsTracing) return;
         _isPlanted = true;
         _image.sprite = _gridManager.GetSpriteOnPlantTracer();
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
         CardSoundManager.Play(CardSoundType.PlantSound);
+        PlantTracer.StopTracing();
+        GridManager.card.SetCardInCd();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (_isPlanted) return;
+        if (!PlantTracer.IsTracing) return;
         _gridManager.SetIsPointerEnter(true);
         _image.sprite = _gridManager.GetSpriteOnPlantTracer();
         _image.color = new Color(255,255,255,0.7f);
@@ -41,6 +45,7 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         if (_isPlanted) return;
+        if(!PlantTracer.IsTracing) return;
         _gridManager.SetIsPointerEnter(false);
         _image.color = new Color(255,255,255,0f);
         _image.sprite = null;

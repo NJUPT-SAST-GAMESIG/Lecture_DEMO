@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class PlantTracer : MonoBehaviour
 {
-    private GameObject _bindingPlant;
-    private SpriteRenderer _spriteRenderer;
-    private bool _isTracing;
+    private static GameObject _bindingPlant;
+    private static SpriteRenderer _spriteRenderer;
+    public static bool IsTracing;
     private CardSoundManager _cardSoundManager;
     private Dictionary<string, string> _capitalizedPlantName;
 
@@ -39,29 +39,29 @@ public class PlantTracer : MonoBehaviour
     }
     
     //测试用重载
-    public void StartTracing()
-    {
-        _bindingPlant.SetActive(true);
-        _isTracing = true;
-    }
+    // public void StartTracing()
+    // {
+    //     _bindingPlant.SetActive(true);
+    //     _isTracing = true;
+    // }
     public void StartTracing(PlantCardConfig cardConfig)
     {
         string path = "Images/Plants/"+ _capitalizedPlantName[cardConfig.Name] +"/"+_capitalizedPlantName[cardConfig.Name]+ "_1";
         _spriteRenderer.sprite = Resources.Load<Sprite>(path);
         _bindingPlant.SetActive(true);
-        _isTracing = true;
+        IsTracing = true;
     }
     
-    public void StopTracing()
+    public static void StopTracing()
     {
-        _isTracing = false;
+        IsTracing = false;
         _bindingPlant.SetActive(false);
         //声音播放
         //todo...
     }
     private void Update()
     {
-        if(!_isTracing)return;
+        if(!IsTracing)return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         _bindingPlant.transform.position = ray.origin;
     }
