@@ -24,4 +24,9 @@ public class SunManager : MonoBehaviour,ISunManager
     {
         return true;
     }
+
+    private void Start()
+    {
+        SunNum = 100;
+    }
 }

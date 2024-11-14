@@ -8,7 +8,7 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
 
     public static bool IsCd;
 
-    public static float CdStartTime;
+    public float CdStartTime;
 
     private static Image _cardImage;
     private Slider _cardSlider;
