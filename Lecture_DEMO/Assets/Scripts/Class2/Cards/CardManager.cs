@@ -8,7 +8,6 @@ public class CardManager : MonoBehaviour
     private GameObject _plantCardPanel;
     
     private List<PlantCardConfig> _cardsConfigs;//存储卡牌信息列表，存好了后再读卡牌信息加载到游戏内
-    private CardSoundManager _cardSoundManager;
     private PlantTracer _plantTracer;
     private SunManager _sunManager;
     private GridManager _gridManager;
@@ -19,7 +18,6 @@ public class CardManager : MonoBehaviour
         _plantCardPanel = GameObject.Find("Canvas/PlantsChooser/CardPanel");
         _cardsConfigs = new List<PlantCardConfig>();
         
-        _cardSoundManager = transform.GetComponent<CardSoundManager>();
         _plantTracer = transform.GetComponent<PlantTracer>();
         _sunManager = transform.GetComponent<SunManager>();
         _gridManager = GameObject.Find("Canvas/Grids").GetComponent<GridManager>();
@@ -80,7 +78,6 @@ public class CardManager : MonoBehaviour
     private void InstantiateCardManagers(PlantCard cardScript)
     {
         cardScript.SetSunManager(_sunManager);
-        cardScript.SetCardSoundManager(_cardSoundManager);
         cardScript.SetPlantTracer(_plantTracer);
         cardScript.SetGridManager(_gridManager);
     }

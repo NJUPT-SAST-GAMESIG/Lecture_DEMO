@@ -10,7 +10,6 @@ public class PlantTracer : MonoBehaviour
     private static GameObject _bindingPlant;
     private static SpriteRenderer _spriteRenderer;
     public static bool IsTracing;
-    private CardSoundManager _cardSoundManager;
     private Dictionary<string, string> _capitalizedPlantName;
 
     private void OnEnable()
@@ -31,11 +30,6 @@ public class PlantTracer : MonoBehaviour
         _capitalizedPlantName.Add("squash", "Squash");
         _capitalizedPlantName.Add("sunflower", "Sunflower");
         _capitalizedPlantName.Add("wallnut", "WallNut");
-    }
-
-    public void SetCardSoundManager(CardSoundManager cardSoundManager)
-    {
-        _cardSoundManager = cardSoundManager;
     }
     
     //测试用重载

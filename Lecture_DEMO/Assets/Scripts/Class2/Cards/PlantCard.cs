@@ -15,7 +15,6 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     private Slider _cardSlider;
     
     private ISunManager _sunManager; //这几个管理器的初始化是权宜之计，后面会再改
-    private CardSoundManager _cardSoundManager; //
     private PlantTracer _plantTracer;//
     private GridManager _gridManager;
     private void OnEnable()
@@ -70,10 +69,6 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     public void SetSunManager(ISunManager sunManager)
     {
         _sunManager = sunManager;
-    }
-    public void SetCardSoundManager(CardSoundManager cardSoundManager)
-    {
-        _cardSoundManager = cardSoundManager;
     }
     public void SetPlantTracer(PlantTracer plantTracer)
     {
