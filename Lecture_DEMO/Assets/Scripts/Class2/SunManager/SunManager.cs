@@ -5,6 +5,7 @@ namespace Class2.SunManager
     public class SunManager : MonoBehaviour,ISunManager
     {
         private int SunNum{get;set;}
+        private int NormalSunNum{get;set;}
         public void SunReduce(int sunCost)
         {
             SunNum -= sunCost;
@@ -13,6 +14,7 @@ namespace Class2.SunManager
         private void Start()
         {
             SunNum = 0;
+            NormalSunNum = 25;
         }
 
         public int GetSunValue()
@@ -21,9 +23,9 @@ namespace Class2.SunManager
             return sunValue;
         }
 
-        public bool SunNumJudge()
+        public void SunIncrease()
         {
-            return true;
+            SunNum += NormalSunNum;
         }
     }
 }

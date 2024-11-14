@@ -1,4 +1,5 @@
 using System.Linq;
+using Class2.SunManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,7 @@ namespace Class1.SunGeneration
         private float _curExistTime;
         private float _finalY;
         private Camera _camera;
+        private SunManager _sunManager;
 
         private void Awake()
         {
@@ -45,8 +47,10 @@ namespace Class1.SunGeneration
 
             if (collider2Ds.Contains(_collider2D))
                 if (Input.GetMouseButtonDown(0))
+                {
                     Destroy(gameObject);
-            // TODO: add sun
+                    _sunManager.SunIncrease();
+                }
         }
     }
 }

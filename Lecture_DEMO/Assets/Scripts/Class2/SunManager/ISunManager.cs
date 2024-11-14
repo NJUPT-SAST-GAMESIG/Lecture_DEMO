@@ -4,6 +4,7 @@ namespace Class2.SunManager
     {
         public void SunReduce(int sunCost);
 
+        public void SunIncrease();
         /// <summary>
         /// 获取阳光管理器里面的阳光数量
         /// </summary>
