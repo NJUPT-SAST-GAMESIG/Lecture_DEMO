@@ -1,5 +1,4 @@
 using System.Linq;
-using Class2.SunManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
