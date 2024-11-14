@@ -8,7 +8,8 @@ namespace Class1.SunGeneration
         public GameObject sunPrefab;
         [SerializeField] private float sunGenerationTime = 3f;
         [SerializeField] private float timer = 3f;
-    
+
+
         private void Update()
         {
             //change position
