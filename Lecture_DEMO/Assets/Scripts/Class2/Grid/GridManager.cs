@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +10,13 @@ public class GridManager : MonoBehaviour
     private bool _isPointerEnter;
     private CardManager _cardManager;
     private SpriteRenderer _spriteRendererOnPlantTracer;
-    public static PlantCard card;
-
+    public PlantCard card;
     private void OnEnable()
     {
         _gridObjects = new List<GameObject>();
         _grids = new List<GridScript>();
         //疑似高性能消耗，可能会卡顿
-        for (var i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             _gridObjects.Add(transform.GetChild(i).gameObject);
             _gridObjects[i].AddComponent<GridScript>();
@@ -23,22 +24,18 @@ public class GridManager : MonoBehaviour
             _grids[i].SetGridController(this);
         }
     }
-
     public void SetCardManager(CardManager cardManager)
     {
         _cardManager = cardManager;
     }
-
     public void SetIsPointerEnter(bool value)
     {
         _isPointerEnter = value;
     }
-
     public void GetSpriteRendererOnPlantTracer(SpriteRenderer spriteRenderer)
     {
         _spriteRendererOnPlantTracer = spriteRenderer;
     }
-
     public Sprite GetSpriteOnPlantTracer()
     {
         return _spriteRendererOnPlantTracer.sprite;

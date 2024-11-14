@@ -1,12 +1,10 @@
 public class PlantCardConfig
 {
     public int Id;
-
     /// <summary>
-    ///     名字示例:peashooter(豌豆射手)
+    /// 名字示例:peashooter(豌豆射手)
     /// </summary>
     public string Name;
-
     public int SunShineReduce;
     public float CardCd;
 

@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlantTracer : MonoBehaviour
@@ -33,7 +37,7 @@ public class PlantTracer : MonoBehaviour
     {
         _cardSoundManager = cardSoundManager;
     }
-
+    
     //测试用重载
     // public void StartTracing()
     // {
@@ -42,13 +46,12 @@ public class PlantTracer : MonoBehaviour
     // }
     public void StartTracing(PlantCardConfig cardConfig)
     {
-        var path = "Images/Plants/" + _capitalizedPlantName[cardConfig.Name] + "/" +
-                   _capitalizedPlantName[cardConfig.Name] + "_1";
+        string path = "Images/Plants/"+ _capitalizedPlantName[cardConfig.Name] +"/"+_capitalizedPlantName[cardConfig.Name]+ "_1";
         _spriteRenderer.sprite = Resources.Load<Sprite>(path);
         _bindingPlant.SetActive(true);
         IsTracing = true;
     }
-
+    
     public static void StopTracing()
     {
         IsTracing = false;
@@ -56,14 +59,12 @@ public class PlantTracer : MonoBehaviour
         //声音播放
         //todo...
     }
-
     private void Update()
     {
-        if (!IsTracing) return;
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(!IsTracing)return;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         _bindingPlant.transform.position = ray.origin;
     }
-
     public SpriteRenderer GetSpriteRenderer()
     {
         return _spriteRenderer;
