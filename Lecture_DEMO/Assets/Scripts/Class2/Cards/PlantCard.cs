@@ -59,7 +59,6 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
             var sprite = Resources.Load<Sprite>(path);
             _cardImage.sprite = sprite;
             _isCd = false;
-            print("现在恢复为卡牌:"+_cardConfig.Name);
         }
     }
 
@@ -101,9 +100,12 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         }
         //开始植物追踪
         _plantTracer.StartTracing(_cardConfig);
-        print("现在追踪的卡牌为:"+_cardConfig.Name);
         CardSoundManager.Play(CardSoundType.PickUpSound);
-        
+        _gridManager.card = this;
+    }
+
+    public void StartCoolingdown()
+    {
         var path = "Images/Card/card_"+ _cardConfig.Name + "2";
         var sprite = Resources.Load<Sprite>(path);
         _cardImage.sprite = sprite;
@@ -111,9 +113,8 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         _isCd = true;
     }
 
-    public void StartCoolingdown()
+    public int GetCardCost()
     {
-        
+        return _cardConfig.SunShineReduce;
     }
-    
 }

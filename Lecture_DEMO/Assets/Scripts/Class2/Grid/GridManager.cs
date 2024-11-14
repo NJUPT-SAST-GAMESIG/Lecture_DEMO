@@ -10,6 +10,7 @@ public class GridManager : MonoBehaviour
     private bool _isPointerEnter;
     private CardManager _cardManager;
     private SpriteRenderer _spriteRendererOnPlantTracer;
+    private SunManager _sunManager;
     public PlantCard card;
     private void OnEnable()
     {
@@ -28,6 +29,10 @@ public class GridManager : MonoBehaviour
     {
         _cardManager = cardManager;
     }
+    public void SetSunManager(SunManager sunManager)
+    {
+        _sunManager = sunManager;
+    }
     public void SetIsPointerEnter(bool value)
     {
         _isPointerEnter = value;
@@ -39,5 +44,10 @@ public class GridManager : MonoBehaviour
     public Sprite GetSpriteOnPlantTracer()
     {
         return _spriteRendererOnPlantTracer.sprite;
+    }
+
+    public void ReduceSunNum()
+    {
+        _sunManager.SunReduce(card.GetCardCost());
     }
 }

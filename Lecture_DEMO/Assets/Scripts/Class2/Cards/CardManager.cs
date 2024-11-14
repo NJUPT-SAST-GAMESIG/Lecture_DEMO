@@ -25,6 +25,7 @@ public class CardManager : MonoBehaviour
         _gridManager = GameObject.Find("Canvas/Grids").GetComponent<GridManager>();
         
         _gridManager.SetCardManager(this);//双向获取引用
+        _gridManager.SetSunManager(_sunManager);
         _gridManager.GetSpriteRendererOnPlantTracer(_plantTracer.GetSpriteRenderer());
     }
 
