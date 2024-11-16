@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 3
   maxExistTime: 10
+  sunClickSound: {fileID: 8300000, guid: 3aef7dad32ac4a34fa2325275d0b28c0, type: 3}
 --- !u!58 &3247624721187314424
 CircleCollider2D:
   m_ObjectHideFlags: 0

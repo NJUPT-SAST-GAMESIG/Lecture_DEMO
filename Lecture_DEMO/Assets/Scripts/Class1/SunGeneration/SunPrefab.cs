@@ -20,6 +20,8 @@ public class SunPrefab : MonoBehaviour
     // {
     //     _sunManager = sunManager;
     // }
+    [SerializeField] private AudioClip sunClickSound; // 用于存储音效
+    private AudioSource _audioSource;//如果有多个地方需要播放音效，可以创建一个独立的 AudioManager 脚本统一管理音效播放。
     private void Awake()
     {
         _camera = Camera.main;
@@ -28,6 +30,20 @@ public class SunPrefab : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
         _sunManager = GameObject.Find("PlantsChooser").GetComponent<SunManager>();
+        // 获取 AudioSource 组件，如果没有，动态添加
+        // _audioSource = GetComponent<AudioSource>();
+        // if (_audioSource == null)
+        // {
+        //     Debug.LogError("No audio source found");
+        _audioSource = gameObject.AddComponent<AudioSource>();
+        // }
+        // 初始化 AudioSource 设置
+        _audioSource.playOnAwake = false; // 不自动播放
+        _audioSource.spatialBlend = 0.0f; // 确保是 2D 声音
+        _audioSource.volume = 1.0f; // 设置音量为 100%
+        _audioSource.loop = false; // 不循环播放
+        _audioSource.minDistance = 1.0f;
+        _audioSource.maxDistance = 50.0f;
     }
 
     private void Start()
@@ -50,11 +66,21 @@ public class SunPrefab : MonoBehaviour
 
         if (collider2Ds.Contains(_collider2D)&&Input.GetMouseButtonDown(0))
         {
+            PlayClickSound(); // 播放点击音效
             Destroy(gameObject);
             // if (sunManager != null)
             // {
                 _sunManager.SunIncrease();
             // }
         }
+        
     }
+    private void PlayClickSound()
+    {
+        if (sunClickSound != null && _audioSource != null)
+        {
+            _audioSource.PlayOneShot(sunClickSound); // 播放点击音效
+        }
+    }
+
 }
