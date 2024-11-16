@@ -13,11 +13,13 @@ public class SunPrefab : MonoBehaviour
     private float _curExistTime;
     private float _finalY;
     private Camera _camera;
-    private ISunManager _sunManager; // 使用接口类型引用 SunManager
-    public void SetSunManager(ISunManager sunManager)
-    {
-        _sunManager = sunManager;
-    }
+    private SunManager _sunManager;
+    //依赖注入版本
+    // private ISunManager _sunManager; // 使用接口类型引用 SunManager
+    // public void SetSunManager(ISunManager sunManager)
+    // {
+    //     _sunManager = sunManager;
+    // }
     private void Awake()
     {
         _camera = Camera.main;
@@ -25,6 +27,7 @@ public class SunPrefab : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
+        _sunManager = GameObject.Find("PlantsChooser").GetComponent<SunManager>();
     }
 
     private void Start()
@@ -48,14 +51,10 @@ public class SunPrefab : MonoBehaviour
         if (collider2Ds.Contains(_collider2D)&&Input.GetMouseButtonDown(0))
         {
             Destroy(gameObject);
-            if (_sunManager != null)
-            {
+            // if (sunManager != null)
+            // {
                 _sunManager.SunIncrease();
-            }
-            else
-            {
-                Debug.Log("SunManager is not assigned!");
-            }
+            // }
         }
     }
 }

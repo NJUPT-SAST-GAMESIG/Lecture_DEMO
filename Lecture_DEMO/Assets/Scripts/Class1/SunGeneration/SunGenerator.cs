@@ -20,12 +20,15 @@ namespace Class1.SunGeneration
             if (timer >= sunGenerationTime)
             {
                 timer = 0;
-                var sunlight = Instantiate(sunPrefab, position, Quaternion.identity);
-                var sunPrefabScript = sunlight.GetComponent<SunPrefab>();
-                if (sunPrefabScript != null)
-                {
-                    sunPrefabScript.SetSunManager(FindObjectOfType<SunManager>()); // 注入 SunManager
-                }
+                Instantiate(sunPrefab, position, Quaternion.identity);
+                // var sunlight = Instantiate(sunPrefab, position, Quaternion.identity);
+                // var sunPrefabScript = sunlight.GetComponent<SunPrefab>();
+                //依赖注入版本
+                // var sunPrefabScript = sunlight.GetComponent<SunPrefab>();
+                // if (sunPrefabScript != null)
+                // {
+                //     sunPrefabScript.SetSunManager(FindObjectOfType<SunManager>()); // 注入 SunManager
+                // }
             }
         }
     }
