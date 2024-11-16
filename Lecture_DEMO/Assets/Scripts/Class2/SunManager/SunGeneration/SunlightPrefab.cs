@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 
@@ -79,7 +80,8 @@ public class SunlightPrefab : MonoBehaviour
     {
         if (sunClickSound != null && _audioSource != null)
         {
-            _audioSource.PlayOneShot(sunClickSound); // 播放点击音效
+            // _audioSource.PlayOneShot(sunClickSound); // 播放点击音效
+            CardSoundManager.Play(CardSoundType.SunClickSound);
         }
     }
 

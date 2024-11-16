@@ -7,7 +7,8 @@ public enum CardSoundType
     PlantSound,
     LackOfSunSound,
     PickUpSound,
-    PutBackSound
+    PutBackSound,
+    SunClickSound
 }
 public class CardSoundManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CardSoundManager : MonoBehaviour
     private static AudioSource lackOfSunSound;
     private static AudioSource pickUpSound;
     private static AudioSource putBackSound;
+    private static AudioSource SunClickSound;
     public const string PlantSoundPath = "Audio/Sound/";
 
     private void Start()
@@ -33,6 +35,10 @@ public class CardSoundManager : MonoBehaviour
         putBackSound = gameObject.AddComponent<AudioSource>();
         putBackSound.playOnAwake = false;
         
+        pickUpSound = gameObject.AddComponent<AudioSource>();
+        pickUpSound.playOnAwake = false;
+        pickUpSound.clip = Resources.Load<AudioClip>(PlantSoundPath + "points");
+        
     }
 
     public static void Play(CardSoundType cardSoundType)
@@ -50,6 +56,9 @@ public class CardSoundManager : MonoBehaviour
                 break;
             case CardSoundType.LackOfSunSound:
                 lackOfSunSound.Play();
+                break;
+            case CardSoundType.SunClickSound:
+                SunClickSound.Play();
                 break;
             default: print("没有这个音效类型"); break;
         }
