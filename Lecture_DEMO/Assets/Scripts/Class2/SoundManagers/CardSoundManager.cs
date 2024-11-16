@@ -35,9 +35,9 @@ public class CardSoundManager : MonoBehaviour
         putBackSound = gameObject.AddComponent<AudioSource>();
         putBackSound.playOnAwake = false;
         
-        pickUpSound = gameObject.AddComponent<AudioSource>();
-        pickUpSound.playOnAwake = false;
-        pickUpSound.clip = Resources.Load<AudioClip>(PlantSoundPath + "points");
+        SunClickSound = gameObject.AddComponent<AudioSource>();
+        SunClickSound.playOnAwake = false;
+        SunClickSound.clip = Resources.Load<AudioClip>(PlantSoundPath + "points");
         
     }
 
