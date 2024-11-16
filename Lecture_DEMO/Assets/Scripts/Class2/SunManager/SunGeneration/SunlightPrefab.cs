@@ -3,7 +3,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-public class SunPrefab : MonoBehaviour
+public class SunlightPrefab : MonoBehaviour
 {
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;

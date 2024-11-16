@@ -3674,7 +3674,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 938298099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd58ac9045bf7c41819a6e246c4dbe6, type: 3}
+  m_Script: {fileID: 11500000, guid: d37f9755004336d4194f9eb3a3a2352f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sunPrefab: {fileID: 6439821569711400885, guid: 125fa99cc63968a45970d4770634ac3a, type: 3}

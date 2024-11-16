@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4460353545649567148}
   - component: {fileID: 3507570638827553833}
   - component: {fileID: -2255960577722038605}
-  - component: {fileID: -4038850696045533577}
+  - component: {fileID: 4859218445780370302}
   - component: {fileID: 3247624721187314424}
   m_Layer: 0
   m_Name: Sun
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-4038850696045533577
+--- !u!114 &4859218445780370302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6439821569711400885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee68d9fe503ec94ba2e0e7d2f32ce0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ce0c54d3fb437345b5d0d5a7dcf944b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 3
