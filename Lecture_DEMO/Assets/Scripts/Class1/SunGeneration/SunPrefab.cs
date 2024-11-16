@@ -13,8 +13,11 @@ public class SunPrefab : MonoBehaviour
     private float _curExistTime;
     private float _finalY;
     private Camera _camera;
-    private SunManager _sunManager;
-
+    private ISunManager _sunManager; // 使用接口类型引用 SunManager
+    public void SetSunManager(ISunManager sunManager)
+    {
+        _sunManager = sunManager;
+    }
     private void Awake()
     {
         _camera = Camera.main;
@@ -42,11 +45,17 @@ public class SunPrefab : MonoBehaviour
             _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g,
                 _spriteRenderer.color.b, 0.8f);
 
-        if (collider2Ds.Contains(_collider2D))
-            if (Input.GetMouseButtonDown(0))
+        if (collider2Ds.Contains(_collider2D)&&Input.GetMouseButtonDown(0))
+        {
+            Destroy(gameObject);
+            if (_sunManager != null)
             {
-                Destroy(gameObject);
                 _sunManager.SunIncrease();
             }
+            else
+            {
+                Debug.Log("SunManager is not assigned!");
+            }
+        }
     }
 }

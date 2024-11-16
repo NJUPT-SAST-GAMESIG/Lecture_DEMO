@@ -11,7 +11,7 @@ public class SunManager : MonoBehaviour,ISunManager
 
     public void SunIncrease()
     {
-        throw new NotImplementedException();
+        SunNum += 25;
     }
 
     public int GetSunValue()
@@ -19,12 +19,7 @@ public class SunManager : MonoBehaviour,ISunManager
         int sunValue = SunNum;
         return sunValue;
     }
-
-    public bool SunNumJudge()
-    {
-        return true;
-    }
-
+    
     private void Start()
     {
         SunNum = 100;
