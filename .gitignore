@@ -79,3 +79,4 @@ crashlytics-build.properties
 
 /Lecture_DEMO/Logs/*
 /Lecture_DEMO/Temp/*
+Lecture_DEMO/UserSettings/Search.index
