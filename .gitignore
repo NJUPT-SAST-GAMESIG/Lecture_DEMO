@@ -78,4 +78,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /Lecture_DEMO/Logs/*
+<<<<<<< HEAD
 /Lecture_DEMO/Temp/*
+=======
+/Lecture_DEMO/Temp/*
+Lecture_DEMO/UserSettings/Search.index
+>>>>>>> dev
