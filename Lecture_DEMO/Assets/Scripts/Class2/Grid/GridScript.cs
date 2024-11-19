@@ -32,6 +32,11 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
         CardSoundManager.Play(CardSoundType.PlantSound);
         PlantTracer.StopTracing();
+
+        //Debug.Log(_gridManager.card.GetName());
+        
+        SetAnimator("Animation/Plants/"+_gridManager.card.GetName()+"/"+_gridManager.card.GetName());
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -51,6 +56,21 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.color = new Color(255,255,255,0f);
         _image.sprite = null;
     }
+
+    public void SetAnimator(string animatorPath)
+    {
+        RuntimeAnimatorController runTimeAnimator = Resources.Load<RuntimeAnimatorController>(animatorPath);
+
+        Animator animator = gameObject.GetComponent<Animator>();
+        
+        if (animator == null )
+            animator=gameObject.AddComponent<Animator>();
+
+        if (runTimeAnimator != null) 
+            animator.runtimeAnimatorController = runTimeAnimator;
+        
+    }
+    
 
     
 }
