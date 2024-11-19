@@ -35,6 +35,7 @@ public class PeaBullet : MonoBehaviour
         {
           //  other.GetComponent<Zombie>().TakeDamage(damage);
             Destroy(gameObject);
+            
             var go = Instantiate(bullethitEffect, transform.position, Quaternion.identity);
             Destroy(go, 1f);
         }

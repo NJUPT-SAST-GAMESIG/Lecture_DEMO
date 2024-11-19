@@ -34,9 +34,9 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         PlantTracer.StopTracing();
 
         //Debug.Log(_gridManager.card.GetName());
-        
-        SetAnimator("Animation/Plants/"+_gridManager.card.GetName()+"/"+_gridManager.card.GetName());
-        
+        string cardName = _gridManager.card.GetName();
+        SetAnimator("Animation/Plants/"+cardName+"/"+cardName);
+        UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(gameObject, "Assets/Scripts/Class2/Grid/GridScript.cs (39,9)", cardName);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

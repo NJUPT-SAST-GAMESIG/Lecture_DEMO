@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    public string plantName; // 植物名称
+    protected  string plantName; // 植物名称
     public int health; // 生命值
     public int attackDamage; // 攻击伤害
-    public float attackCooldown; // 攻击冷却时间
+    [SerializeField]
+    protected float attackCooldown; // 攻击冷却时间
     public float attackRange; // 攻击范围
     public bool isAlive = true; // 植物是否存活
 
@@ -32,6 +33,8 @@ public class Plant : MonoBehaviour
         if (animator == null )
             animator=gameObject.AddComponent<Animator>();
         animator.runtimeAnimatorController = null;
+        
+        Destroy(this);
     }
 
 
@@ -55,7 +58,6 @@ public class Plant : MonoBehaviour
     // 植物攻击行为（可以根据需要重写）
     protected virtual void Attack()
     {
-        // 这里可以放置攻击逻辑，例如检查攻击范围内的僵尸并造成伤害
-        Debug.Log($"{plantName} attacks with {attackDamage} damage.");
+
     }
 }
