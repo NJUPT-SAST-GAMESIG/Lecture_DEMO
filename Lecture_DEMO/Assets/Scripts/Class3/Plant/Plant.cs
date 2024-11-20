@@ -1,17 +1,24 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Plant : MonoBehaviour
 {
     protected  string plantName; // 植物名称
-    public int health; // 生命值
-    public int attackDamage; // 攻击伤害
-    [SerializeField]
+    protected int health; // 生命值
+    protected int attackDamage; // 攻击伤害
     protected float attackCooldown; // 攻击冷却时间
-    public float attackRange; // 攻击范围
-    public bool isAlive = true; // 植物是否存活
+    protected float attackRange; // 攻击范围
+    public bool isAlive=true ; // 植物是否存活
 
     private float attackTimer; // 攻击冷却计时器
+    
 
+    protected void Start()
+    {
+        SetAnimator("Animation/Plants/"+plantName+"/"+plantName);
+    }
 
     public void TakeDamage(int damage)
     {
@@ -24,8 +31,23 @@ public class Plant : MonoBehaviour
             }
         }
     }
+    
+    private void SetAnimator(string animatorPath)
+    {
+        RuntimeAnimatorController runTimeAnimator = Resources.Load<RuntimeAnimatorController>(animatorPath);
 
-    private void Die()
+        Animator animator = gameObject.GetComponent<Animator>();
+        
+        if (animator == null )
+            animator=gameObject.AddComponent<Animator>();
+
+        if (runTimeAnimator != null) 
+            animator.runtimeAnimatorController = runTimeAnimator;
+        
+    }
+
+
+    protected void Die()
     {
         isAlive = false;
 
@@ -33,7 +55,10 @@ public class Plant : MonoBehaviour
         if (animator == null )
             animator=gameObject.AddComponent<Animator>();
         animator.runtimeAnimatorController = null;
-        
+
+        Image image = gameObject.GetComponent<Image>();
+        image.color=new Color(255, 255, 255, 0f);
+        gameObject.tag = "Grid";
         Destroy(this);
     }
 

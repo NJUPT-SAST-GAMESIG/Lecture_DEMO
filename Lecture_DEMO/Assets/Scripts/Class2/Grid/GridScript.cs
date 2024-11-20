@@ -35,7 +35,8 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
 
         //Debug.Log(_gridManager.card.GetName());
         string cardName = _gridManager.card.GetName();
-        SetAnimator("Animation/Plants/"+cardName+"/"+cardName);
+        
+        
         UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(gameObject, "Assets/Scripts/Class2/Grid/GridScript.cs (39,9)", cardName);
     }
 
@@ -57,19 +58,6 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.sprite = null;
     }
 
-    public void SetAnimator(string animatorPath)
-    {
-        RuntimeAnimatorController runTimeAnimator = Resources.Load<RuntimeAnimatorController>(animatorPath);
-
-        Animator animator = gameObject.GetComponent<Animator>();
-        
-        if (animator == null )
-            animator=gameObject.AddComponent<Animator>();
-
-        if (runTimeAnimator != null) 
-            animator.runtimeAnimatorController = runTimeAnimator;
-        
-    }
     
 
     
