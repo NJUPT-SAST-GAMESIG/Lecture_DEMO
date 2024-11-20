@@ -10,8 +10,12 @@ public class peashooter : Plant
 
     private void Start()
     {
+        
+        plantName = "peashooter";
+        health = 100;
         attackCooldown = 0.7f;
         peaBullet = Resources.Load<GameObject>("BulletPrefab/PeaBullet");
+        base.Start();
     }
 
     protected override void Attack()
@@ -20,7 +24,7 @@ public class peashooter : Plant
         if (peaBullet != null)
         {
             //Debug.Log(1);
-            Vector3 trans =new Vector3(transform.position.x,transform.position.y+0.2f) ;
+            Vector3 trans =new Vector3(transform.position.x,transform.position.y+0.25f) ;
             
             GameObject pb= Instantiate(peaBullet,trans, Quaternion.identity);
             pb.transform.SetParent(transform.parent);
