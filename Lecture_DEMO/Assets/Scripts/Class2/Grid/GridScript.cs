@@ -32,6 +32,12 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
         CardSoundManager.Play(CardSoundType.PlantSound);
         PlantTracer.StopTracing();
+
+        //Debug.Log(_gridManager.card.GetName());
+        string cardName = _gridManager.card.GetName();
+        
+        
+        UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(gameObject, "Assets/Scripts/Class2/Grid/GridScript.cs (39,9)", cardName);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -51,6 +57,8 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.color = new Color(255,255,255,0f);
         _image.sprite = null;
     }
+
+    
 
     
 }

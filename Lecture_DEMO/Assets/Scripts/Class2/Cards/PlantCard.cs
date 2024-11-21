@@ -112,4 +112,9 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     {
         return _cardConfig.SunShineReduce;
     }
+
+    public string GetName()
+    {
+        return _cardConfig.Name; 
+    }
 }
