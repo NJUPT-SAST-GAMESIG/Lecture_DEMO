@@ -6,8 +6,7 @@ using UnityEngine;
 public class PeaBullet : MonoBehaviour
 {
     private float speed = 3;
-    [SerializeField] private int damage = 20;
-    public GameObject bullethitEffect;
+    [SerializeField] private int damage = 0;
 
     public void SetSpeed(float speed)
     {
@@ -33,11 +32,12 @@ public class PeaBullet : MonoBehaviour
     {
         if (other.tag == "Zombie")
         {
-          //  other.GetComponent<Zombie>().TakeDamage(damage);
+            other.GetComponent<Zombie>().TakeDamage(damage);
+            
             Destroy(gameObject);
             
-            var go = Instantiate(bullethitEffect, transform.position, Quaternion.identity);
-            Destroy(go, 1f);
+            
         }
     }
+    
 }

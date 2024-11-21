@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Plant : MonoBehaviour
+public abstract class Plant : MonoBehaviour
 {
     protected  string plantName; // 植物名称
     protected int health; // 生命值
@@ -15,7 +15,7 @@ public class Plant : MonoBehaviour
     private float attackTimer; // 攻击冷却计时器
     
 
-    protected void Start()
+    protected virtual void Start()
     {
         SetAnimator("Animation/Plants/"+plantName+"/"+plantName);
     }
@@ -47,7 +47,7 @@ public class Plant : MonoBehaviour
     }
 
 
-    protected void Die()
+    protected virtual void Die()
     {
         isAlive = false;
 
@@ -58,7 +58,7 @@ public class Plant : MonoBehaviour
 
         Image image = gameObject.GetComponent<Image>();
         image.color=new Color(255, 255, 255, 0f);
-        gameObject.tag = "Grid";
+        
         Destroy(this);
     }
 
