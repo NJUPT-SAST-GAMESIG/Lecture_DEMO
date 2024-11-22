@@ -6354,8 +6354,15 @@ MonoBehaviour:
   - {fileID: 1611973912}
   - {fileID: 614598833}
   - {fileID: 1169413634}
+  _waves:
+  - IsHappend: 0
+    TimePoint: 0.4
+    ZombieCount: 10
+  - IsHappend: 0
+    TimePoint: 0.9
+    ZombieCount: 16
   waveSlider: {fileID: 976494787}
-  generateCD: 4
+  NormalGenerateCd: 5
 --- !u!4 &1473609907
 Transform:
   m_ObjectHideFlags: 0
