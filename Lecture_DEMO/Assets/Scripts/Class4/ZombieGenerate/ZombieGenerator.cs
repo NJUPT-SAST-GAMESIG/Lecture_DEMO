@@ -8,12 +8,12 @@ using Random = UnityEngine.Random;
 
 public class ZombieGenerator : MonoBehaviour
 {
-    public Transform[] spawnPoints = new Transform[5];
+    [SerializeField]private Transform[] spawnPoints = new Transform[5];
     private GameObject _zombiePrefab;
     [SerializeField] private Slider waveSlider;
     private Transform _zombieParent; 
     private float lastGenerateTime = 0;
-    public float generateCD = 6;
+    public float generateCD = 4;
     private bool isWave = false;
     private void Start()
     {
@@ -22,10 +22,10 @@ public class ZombieGenerator : MonoBehaviour
         waveSlider.onValueChanged.AddListener(StartZombieWave);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        waveSlider.value += Time.deltaTime/120;
-        if(!(Time.time > generateCD + lastGenerateTime))
+        waveSlider.value += Time.fixedDeltaTime/120;//进度条跟进
+        if(!(Time.time > generateCD + lastGenerateTime))//每隔generateCD在随机轨道生成僵尸
             return;
         lastGenerateTime = Time.time;
         GenerateZombies(Random.Range(0,5));
