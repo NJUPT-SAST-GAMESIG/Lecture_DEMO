@@ -58,7 +58,8 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.sprite = null;
     }
 
-    
-
-    
+    public void ReleaseGrid()//用于在植物被销毁后的地块可种植
+    {
+        _isPlanted = false;
+    }  
 }

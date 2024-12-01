@@ -97,7 +97,9 @@ public abstract class BaseZombie : MonoBehaviour
         if (zombieState == ZombieState.Die) return;
         zombieState = ZombieState.Die;
         GetComponent<Collider2D>().enabled = false;
-        _animator.Play("Die");
+        _animator.SetBool("IsDie", zombieState == ZombieState.Die);
+        GameObject head = Instantiate(Resources.Load<GameObject>("ZombiesPrefab/ZombieHead"), transform);
+        head.transform.position = new Vector3(transform.position.x + 0.7f, transform.position.y, transform.position.z);
         Destroy(gameObject, 2f);
     }
 }
