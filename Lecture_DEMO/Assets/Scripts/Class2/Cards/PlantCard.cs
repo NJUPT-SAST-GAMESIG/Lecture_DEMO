@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -111,5 +112,10 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     public int GetCardCost()
     {
         return _cardConfig.SunShineReduce;
+    }
+
+    public string GetName()
+    {
+        return _cardConfig.Name; 
     }
 }
