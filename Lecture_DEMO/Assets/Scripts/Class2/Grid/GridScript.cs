@@ -30,7 +30,7 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _isPlanted = true;
         _image.sprite = _gridManager.GetSpriteOnPlantTracer();
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
-        CardSoundManager.Play(CardSoundType.PlantSound);
+        CardSoundManager.Instance.Play(CardSoundType.PlantSound);
         PlantTracer.StopTracing();
 
         //Debug.Log(_gridManager.card.GetName());

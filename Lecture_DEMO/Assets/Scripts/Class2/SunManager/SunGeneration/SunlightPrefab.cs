@@ -81,7 +81,7 @@ public class SunlightPrefab : MonoBehaviour
         if (sunClickSound != null && _audioSource != null)
         {
             // _audioSource.PlayOneShot(sunClickSound); // 播放点击音效
-            CardSoundManager.Play(CardSoundType.SunClickSound);
+            CardSoundManager.Instance.Play(CardSoundType.SunClickSound);
         }
     }
 
