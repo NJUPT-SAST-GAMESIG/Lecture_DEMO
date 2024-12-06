@@ -15,9 +15,6 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     private Image _cardImage;
     private Slider _cardSlider;
     
-    private ISunManager _sunManager; //这几个管理器的初始化是权宜之计，后面会再改
-    private PlantTracer _plantTracer;//
-    private GridManager _gridManager;
     private void OnEnable()
     {
         _cardImage = GetComponent<Image>();
@@ -66,20 +63,7 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
     {
         _cardConfig = cardConfig;
     }
-
-    public void SetSunManager(ISunManager sunManager)
-    {
-        _sunManager = sunManager;
-    }
-    public void SetPlantTracer(PlantTracer plantTracer)
-    {
-        _plantTracer = plantTracer;
-    }
-
-    public void SetGridManager(GridManager gridManager)
-    {
-        _gridManager = gridManager;
-    }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         if (PlantTracer.IsTracing)
@@ -88,16 +72,16 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         }
         if (_isCd)
             return;
-        if (_sunManager.GetSunValue() < _cardConfig.SunShineReduce)
+        if (SunManager.GetSunValue() < _cardConfig.SunShineReduce)
         {
             //播放音效
             CardSoundManager.Play(CardSoundType.LackOfSunSound);
             return;
         }
         //开始植物追踪
-        _plantTracer.StartTracing(_cardConfig);
+        PlantTracer.StartTracing(_cardConfig);
         CardSoundManager.Play(CardSoundType.PickUpSound);
-        _gridManager.card = this;
+        GridManager.Card = this;
     }
 
     public void StartCoolingdown()

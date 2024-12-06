@@ -8,14 +8,14 @@ using UnityEngine;
 public class PlantTracer : MonoBehaviour
 {
     private static GameObject _bindingPlant;
-    private static SpriteRenderer _spriteRenderer;
+    public static SpriteRenderer SpriteRenderer;
     public static bool IsTracing;
-    private Dictionary<string, string> _capitalizedPlantName;
+    private static Dictionary<string, string> _capitalizedPlantName;
 
     private void OnEnable()
     {
         _bindingPlant = transform.GetChild(0).gameObject;
-        _spriteRenderer = _bindingPlant.GetComponent<SpriteRenderer>();
+        SpriteRenderer = _bindingPlant.GetComponent<SpriteRenderer>();
         //初始化音效管理器
         InitializeAllCapitalizedPlantName();
     }
@@ -38,10 +38,10 @@ public class PlantTracer : MonoBehaviour
     //     _bindingPlant.SetActive(true);
     //     _isTracing = true;
     // }
-    public void StartTracing(PlantCardConfig cardConfig)
+    public static void StartTracing(PlantCardConfig cardConfig)
     {
         string path = "Images/Plants/"+ _capitalizedPlantName[cardConfig.Name] +"/"+_capitalizedPlantName[cardConfig.Name]+ "_1";
-        _spriteRenderer.sprite = Resources.Load<Sprite>(path);
+        SpriteRenderer.sprite = Resources.Load<Sprite>(path);
         _bindingPlant.SetActive(true);
         IsTracing = true;
     }
@@ -59,8 +59,5 @@ public class PlantTracer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         _bindingPlant.transform.position = ray.origin;
     }
-    public SpriteRenderer GetSpriteRenderer()
-    {
-        return _spriteRenderer;
-    }
+    
 }

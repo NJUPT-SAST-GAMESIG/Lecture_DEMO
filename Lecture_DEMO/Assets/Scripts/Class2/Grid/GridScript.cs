@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
-    private GridManager _gridManager;
     private Image _image;
     private bool _isPlanted;
 
@@ -15,26 +14,21 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     {
         _image = GetComponent<Image>();
     }
-
-    public void SetGridController(GridManager gridManager)
-    {
-        _gridManager = gridManager;
-    }
     
     public void OnPointerClick(PointerEventData eventData)
     {
         if(_isPlanted) return;
         if (!PlantTracer.IsTracing) return;
-        _gridManager.card.StartCoolingdown();
-        _gridManager.ReduceSunNum();
+        GridManager.Card.StartCoolingdown();
+        GridManager.ReduceSunNum();
         _isPlanted = true;
-        _image.sprite = _gridManager.GetSpriteOnPlantTracer();
+        _image.sprite = PlantTracer.SpriteRenderer.sprite;
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
         CardSoundManager.Play(CardSoundType.PlantSound);
         PlantTracer.StopTracing();
 
         //Debug.Log(_gridManager.card.GetName());
-        string cardName = _gridManager.card.GetName();
+        string cardName = GridManager.Card.GetName();
         
         
         UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(gameObject, "Assets/Scripts/Class2/Grid/GridScript.cs (39,9)", cardName);
@@ -44,8 +38,8 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     {
         if (_isPlanted) return;
         if (!PlantTracer.IsTracing) return;
-        _gridManager.SetIsPointerEnter(true);
-        _image.sprite = _gridManager.GetSpriteOnPlantTracer();
+        GridManager.IsPointerEnter = true;
+        _image.sprite = PlantTracer.SpriteRenderer.sprite;
         _image.color = new Color(255,255,255,0.7f);
     }
 
@@ -53,7 +47,7 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     {
         if (_isPlanted) return;
         if(!PlantTracer.IsTracing) return;
-        _gridManager.SetIsPointerEnter(false);
+        GridManager.IsPointerEnter = false;
         _image.color = new Color(255,255,255,0f);
         _image.sprite = null;
     }

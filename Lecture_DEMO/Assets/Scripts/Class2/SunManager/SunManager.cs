@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
 
-public class SunManager : MonoBehaviour,ISunManager
+public class SunManager
 {
-    private int SunNum{get;set;}
-    public void SunReduce(int sunCost)
+    private static SunManager _instance;
+    public static SunManager Instance { get; } = new SunManager();
+    private static int SunNum{get;set;}
+    public static void SunReduce(int sunCost)
     {
         SunNum -= sunCost;
     }
@@ -14,7 +16,7 @@ public class SunManager : MonoBehaviour,ISunManager
         SunNum += 25;
     }
 
-    public int GetSunValue()
+    public static int GetSunValue()
     {
         int sunValue = SunNum;
         return sunValue;

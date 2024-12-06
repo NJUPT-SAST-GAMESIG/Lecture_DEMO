@@ -3,28 +3,25 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardManager : MonoBehaviour
+public class CardManager
 {
-    private GameObject _plantCardPanel;
+    private  static GameObject _plantCardPanel;
     
-    private List<PlantCardConfig> _cardsConfigs;//存储卡牌信息列表，存好了后再读卡牌信息加载到游戏内
-    private PlantTracer _plantTracer;
-    private SunManager _sunManager;
-    private GridManager _gridManager;
-    
+    private static List<PlantCardConfig> _cardsConfigs;//存储卡牌信息列表，存好了后再读卡牌信息加载到游戏内
     private readonly int _cardCount = 8;
-    private void Start()
+
+    private static CardManager _instance;
+    public static CardManager Instance
     {
-        _plantCardPanel = GameObject.Find("Canvas/PlantsChooser/CardPanel");
-        _cardsConfigs = new List<PlantCardConfig>();
-        
-        _plantTracer = transform.GetComponent<PlantTracer>();
-        _sunManager = transform.GetComponent<SunManager>();
-        _gridManager = GameObject.Find("Canvas/Grids").GetComponent<GridManager>();
-        
-        _gridManager.SetCardManager(this);//双向获取引用
-        _gridManager.SetSunManager(_sunManager);
-        _gridManager.GetSpriteRendererOnPlantTracer(_plantTracer.GetSpriteRenderer());
+        get
+        {
+            if (_instance==null)
+            {
+                _plantCardPanel = GameObject.Find("Canvas/PlantsChooser/CardPanel");
+                _cardsConfigs = new List<PlantCardConfig>();
+            }
+            return _instance;
+        }
     }
 
     public void AddCardTest()
@@ -38,7 +35,7 @@ public class CardManager : MonoBehaviour
     {
         if (_cardCount <= _cardsConfigs.Count)//这个最大卡牌数量是只读的，看看要不要改
         {
-            print("卡牌数量已满");
+            // print("卡牌数量已满");
             return;
         }
 
@@ -51,7 +48,7 @@ public class CardManager : MonoBehaviour
     {
         if (_cardCount <= _cardsConfigs.Count)
         {
-            print("卡牌数量已满");
+            // print("卡牌数量已满");
             return;
         }
         
@@ -64,22 +61,14 @@ public class CardManager : MonoBehaviour
         {
             //进行卡牌实例化和卡牌生成
             GameObject plantCardPre = Resources.Load<GameObject>("PlantsCardPrefab/PlantCard");
-            GameObject plantCardObject = Instantiate(plantCardPre, _plantCardPanel.transform);
+            GameObject plantCardObject = MonoBehaviour.Instantiate(plantCardPre, _plantCardPanel.transform);
             
             //获取卡牌脚本
             PlantCard cardScript = plantCardObject.GetComponent<PlantCard>();
             cardScript.SetCard(card);
             
             InstantiateCardImage(plantCardObject, card);
-            InstantiateCardManagers(cardScript);
         }
-    }
-
-    private void InstantiateCardManagers(PlantCard cardScript)
-    {
-        cardScript.SetSunManager(_sunManager);
-        cardScript.SetPlantTracer(_plantTracer);
-        cardScript.SetGridManager(_gridManager);
     }
 
     //初始化卡牌图像
@@ -89,5 +78,7 @@ public class CardManager : MonoBehaviour
         string path = "Images/Card/card_"+card.Name;
         plantCardImage.sprite = Resources.Load<Sprite>(path);
     }
+
+
     
 }
