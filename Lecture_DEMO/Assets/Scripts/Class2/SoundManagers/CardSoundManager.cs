@@ -41,7 +41,13 @@ public class CardSoundManager
             Debug.Log("CardSoundManager单例获取");
             return _instance;
         }
-    } 
+    }
+
+    public static CardSoundManager Ins { get; } = new CardSoundManager();
+    //防止外部调用构造器
+    private CardSoundManager()
+    {
+    }
     // private void Start()
     // {
     //     plantSound = gameObject.AddComponent<AudioSource>();
