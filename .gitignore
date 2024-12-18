@@ -78,9 +78,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 /Lecture_DEMO/Logs/*
-<<<<<<< HEAD
-/Lecture_DEMO/Temp/*
-=======
 /Lecture_DEMO/Temp/*
 Lecture_DEMO/UserSettings/Search.index
->>>>>>> dev
+Lecture_DEMO/UserSettings/Layouts/default-2022.dwlt
+Lecture_DEMO/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
