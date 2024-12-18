@@ -91,12 +91,12 @@ public class PlantCard : MonoBehaviour, IPointerClickHandler
         if (_sunManager.GetSunValue() < _cardConfig.SunShineReduce)
         {
             //播放音效
-            CardSoundManager.Play(CardSoundType.LackOfSunSound);
+            CardSoundManager.Instance.Play(CardSoundType.LackOfSunSound);
             return;
         }
         //开始植物追踪
         _plantTracer.StartTracing(_cardConfig);
-        CardSoundManager.Play(CardSoundType.PickUpSound);
+        CardSoundManager.Instance.Play(CardSoundType.PickUpSound);
         _gridManager.card = this;
     }
 
