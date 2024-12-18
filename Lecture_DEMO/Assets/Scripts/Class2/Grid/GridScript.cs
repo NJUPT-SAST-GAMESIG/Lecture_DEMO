@@ -30,8 +30,14 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _isPlanted = true;
         _image.sprite = _gridManager.GetSpriteOnPlantTracer();
         _image.color = new Color(255, 255, 255, 1f);//植物成功种植，后面改成动画
-        CardSoundManager.Play(CardSoundType.PlantSound);
+        CardSoundManager.Instance.Play(CardSoundType.PlantSound);
         PlantTracer.StopTracing();
+
+        //Debug.Log(_gridManager.card.GetName());
+        string cardName = _gridManager.card.GetName();
+        
+        
+        UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(gameObject, "Assets/Scripts/Class2/Grid/GridScript.cs (39,9)", cardName);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -52,5 +58,8 @@ public class GridScript : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
         _image.sprite = null;
     }
 
-    
+    public void ReleaseGrid()//用于在植物被销毁后的地块可种植
+    {
+        _isPlanted = false;
+    }  
 }
